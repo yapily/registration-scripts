@@ -30,17 +30,18 @@ Before running the script open up `config-files/obseal.cnf` and `config-files/ob
     - For the Financial Conduct Authority (FCA), the format will be `PSDGB-FCA-123456`
     - For the Polish Financial Supervision Authority (PFSA), the format will be `PSDPL-PFSA-1234567890`
 - Update the `commonName` (line 49) to the your **Organisation Id** from the Open Banking Directory
-- Uncomment one of the `qcStatements` lines in each file: 
-    - For AIS only, uncomment out the line below `# PSP_AI` (line 164 in obseal.cnf **and** line 175 in obwac.cnf)
-    - For PIS only, uncomment out the line below `# PSP_PI` (line 162 in obseal.cnf **and**  line 173 in obwac.cnf)
-    - For AIS and PIS, uncomment out the line below the comment `# PSP_PI,PSP_AI` (line 174 in obseal.cnf **and**  line 185 in obwac.cnf)
+- Uncomment one of the `qcStatements` lines in each file. You can find out which roles your entity has in the Open Banking Directory in the
+Competent Authority Claims under PSD2 roles: 
+    - If you're an AISP only, uncomment out the line below `# PSP_AI` (line 164 in obseal.cnf **and** line 175 in obwac.cnf)
+    - If you're an PISP only, uncomment out the line below `# PSP_PI` (line 162 in obseal.cnf **and**  line 173 in obwac.cnf)
+    - If you have both AISP and PISP, uncomment out the line below the comment `# PSP_PI,PSP_AI` (line 174 in obseal.cnf **and**  line 185 in obwac.cnf)
 
 ## Running the file
 
 To run create the keys and certificate signing requests (CSRs) for the `OB Seal` and `OB WAC`, run execute the following:
 
 ```
-./generate_keys.sh [SS_CLIENT_ID]
+./generate_keys.sh [ss-client-id]
 ```
 
 - Make sure you apply the software statement `client-id` as the only parameter
@@ -53,22 +54,26 @@ Next, upload the .csr files for the `OB Seal` and `OB WAC`:
 - Select `OB WAC` and upload the `obwac` `.csr` file
 - Select `OB Seal` and upload the `obseal` `.csr` file
 
-You will then need to download the `.pem` files for each certificate in the menu options for each certificate type. You can do this by clicking on the three dots for each cert
-in the certificates table from the appropriate software statement view within the Open Banking Directory and selecting "Get PEM". 
+If you have done everything successfully, you should see a green notification in the UI confirming the upload was successful, otherwise, check that
+you have completed all the steps to set your config and you have selected roles your eligible for in the dashboard.
+
+## Downloading the PEM files from Open Banking Directory
+
+You will then need to download the `.pem` files for each certificate in the menu options for each certificate type. You can do this by clicking on the three dots for each cert in the certificates table from the appropriate software statement view within the Open Banking Directory and selecting "Get PEM". 
 
 You can then use the rename the files to make them more identifiable using the following convention:
 
 ```
-[certType].[companyName].SSID.[softwareStatementClientId].KID.[certKID].[fileExtension]
+[cert-type].[company-name].SSID.[software-statement-id].KID.[cert-kid].[file-extension]
 ```
 
 The end result should be 4 files in the format:
 
 ```
-obwac.[companyName].SSID.[softwareStatementClientId].KID.[obwacCertKID].key
-obwac.[companyName].SSID.[softwareStatementClientId].KID.[obwacCertKID].pem
-obseal.[companyName].SSID.[softwareStatementClientId].KID.[obsealCertKID].key
-obseal.[companyName].SSID.[softwareStatementClientId].KID.[obsealCertKID].pem
+obwac.[company-name].SSID.[software-statement-id].KID.[obwac-cert-kid].key
+obwac.[company-name].SSID.[software-statement-id].KID.[obwac-cert-kid].pem
+obseal.[company-name].SSID.[software-statement-id].KID.[obseal-cert-kid].key
+obseal.[company-name].SSID.[software-statement-id].KID.[obseal-cert-kid].pem
 ```
 
 Assuming you have not changed the file names from when you created the CSRs, you should be able to use the `rename_files.sh` script to do this for you:
