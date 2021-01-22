@@ -97,4 +97,4 @@ rename_files.sh \
 5. Upload your OB Seal key file for the certificate 
 6. Name the certificate after ether of the file names without the extension 
 7. Save 
-8. Repeat steps 4-7 for the OB WAC files
+8. Repeat steps 3-7 for the OB WAC files
