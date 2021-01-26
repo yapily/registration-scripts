@@ -45,7 +45,8 @@ To run create the keys and certificate signing requests (CSRs) for the `OB Seal`
 ```
 
 - Make sure you apply the software statement `client-id` as the only parameter
-- You will be prompted initially to create a passphrase for both the `OB Seal` and `OB WAC` keys but new keys will be generated from them without a passphrase for your use.
+- You will be prompted initially to create a passphrase for both the `OB Seal` and `OB WAC` keys but new keys will be generated from them without a 
+passphrase for your use.
 - A successful execution of the script will generate 6 files
 
 ## Upload the CSRs to Open Banking Directory
@@ -57,9 +58,16 @@ Next, upload the .csr files for the `OB Seal` and `OB WAC`:
 If you have done everything successfully, you should see a green notification in the UI confirming the upload was successful, otherwise, check that
 you have completed all the steps to set your config and you have selected roles your eligible for in the dashboard.
 
+## Associate the certs with the Software Statement
+
+After uploading the .csr files, make sure to check the tick box to assign both certificates to your software statement. If successful, a green pop up
+should appear.
+
+
 ## Downloading the PEM files from Open Banking Directory
 
-You will then need to download the `.pem` files for each certificate in the menu options for each certificate type. You can do this by clicking on the three dots for each cert in the certificates table from the appropriate software statement view within the Open Banking Directory and selecting "Get PEM". 
+You will then need to download the `.pem` files for each certificate in the menu options for each certificate type. You can do this by clicking on the 
+three dots for each cert in the certificates table from the appropriate software statement view within the Open Banking Directory and selecting "Get PEM". 
 
 You can then use the rename the files to make them more identifiable using the following convention:
 
@@ -76,7 +84,8 @@ obseal.[company-name].SSID.[software-statement-id].KID.[obseal-cert-kid].key
 obseal.[company-name].SSID.[software-statement-id].KID.[obseal-cert-kid].pem
 ```
 
-Assuming you have not changed the file names from when you created the CSRs, you should be able to use the `rename_files.sh` script to do this for you:
+Assuming you have not changed the file names from when you created the .csr files, you should be able to use the `rename_files.sh` script to do this for 
+you:
 
 ```
 rename_files.sh \
