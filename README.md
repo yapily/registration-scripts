@@ -97,7 +97,7 @@ rename_files.sh \
    -obwac-key    [obwac-key-file]
 ```
 
-## Upload the QWAC and QSEAL key and pem files to Yapily
+## Upload the OB WAC and OB SEAL key and pem files to Yapily
 
 1. Go to the [Yapily Dashboard](https://dashboard.yapily.com/) and login
 2. Go to the [Certificates](https://dashboard.yapily.com/#!certificates) page 
