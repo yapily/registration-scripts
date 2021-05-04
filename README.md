@@ -7,7 +7,7 @@ __NOTE: These instructions are not a replacement for the Open Banking Documentat
 
 ## Prerequisites 
 
-Install/Upgrade OpenSSL to the latest version:
+Install/Upgrade OpenSSL to the latest version using [Homebrew](https://brew.sh/):
 
 <details>
 <summary>Mac</summary>
@@ -69,32 +69,19 @@ should appear.
 You will then need to download the `.pem` files for each certificate in the menu options for each certificate type. You can do this by clicking on the 
 three dots for each cert in the certificates table from the appropriate software statement view within the Open Banking Directory and selecting "Get PEM". 
 
-You can then use the rename the files to make them more identifiable using the following convention:
+You should then rename the files to make them more identifiable using the following convention:
 
 ```
-[cert-type].[company-name].SSID.[software-statement-id].KID.[cert-kid].[file-extension]
+[cert-type].[company-name].KID.[cert-kid].[file-extension]
 ```
 
 The end result should be 4 files in the format:
 
 ```
-obwac.[company-name].SSID.[software-statement-id].KID.[obwac-cert-kid].key
-obwac.[company-name].SSID.[software-statement-id].KID.[obwac-cert-kid].pem
-obseal.[company-name].SSID.[software-statement-id].KID.[obseal-cert-kid].key
-obseal.[company-name].SSID.[software-statement-id].KID.[obseal-cert-kid].pem
-```
-
-Assuming you have not changed the file names from when you created the .csr files, you should be able to use the `rename_files.sh` script to do this for 
-you:
-
-```
-rename_files.sh \
-   -company-name [your-company] \
-   -ssid         [software-statement-id] \
-   -obseal-pem   [obseal-pem-file] \
-   -obseal-key   [obseal-key-file] \
-   -obwac-pem    [obwac-pem-file] \
-   -obwac-key    [obwac-key-file]
+obwac.[company-name].KID.[obwac-cert-kid].key
+obwac.[company-name].KID.[obwac-cert-kid].pem
+obseal.[company-name].KID.[obseal-cert-kid].key
+obseal.[company-name].KID.[obseal-cert-kid].pem
 ```
 
 ## Upload the OB WAC and OB SEAL key and pem files to Yapily
@@ -107,3 +94,5 @@ rename_files.sh \
 6. Name the certificate after ether of the file names without the extension 
 7. Save 
 8. Repeat steps 3-7 for the OB WAC files
+9. Create or identify the Yapily Application you wish to use these certs for
+10. Email Yapily to request which `redirectUrl` for each application in Yapily
