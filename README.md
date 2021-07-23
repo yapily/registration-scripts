@@ -1,8 +1,6 @@
 # registration-scripts
 Helper scripts to help direct customers create Open Banking certificates
 
-The following repository is not production code but will help you to generate certificates in line with the Open Banking Directory. 
-
 __NOTE: These instructions are not a replacement for the Open Banking Documentation which should be read [here](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1150124033/Directory+2.0+Technical+Overview+v1.5?preview=/1150124033/1731199716/OpenSSL%20eIDAS%20PSD2%20Certificate%20Signing%20Request%20Profiles%20Issue%202_3.pdf).__
 
 ## Prerequisites 
