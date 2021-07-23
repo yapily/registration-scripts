@@ -7,6 +7,9 @@ __NOTE: These instructions are not a replacement for the Open Banking Documentat
 
 ## Prerequisites 
 
+These instructions assume that you have the appropriate access to the **Open Banking Directory** for the **Production** environment already.
+See [Access to Open Banking Directory](https://docs.yapily.com/guides/applications/institutions/registration/direct/uk-prereqs/#access-to-open-banking-directory) for more information.
+
 Install/Upgrade OpenSSL to the latest version using [Homebrew](https://brew.sh/):
 
 <details>
@@ -46,9 +49,9 @@ To run create the keys and certificate signing requests (CSRs) for the `OB Seal`
 - Make sure you apply the software statement `client-id` as the only parameter
 - You will be prompted initially to create a passphrase for both the `OB Seal` and `OB WAC` keys but new keys will be generated from them without a 
 passphrase for your use.
-- A successful execution of the script will generate 6 files
+- A successful execution of the script will generate 6 files## Upload the CSRs to Open Banking Directory
 
-## Upload the CSRs to Open Banking Directory
+## Upload the CSR files
 
 Next, upload the .csr files for the `OB Seal` and `OB WAC`:
 - Select `OB WAC` and upload the `obwac` `.csr` file
@@ -57,41 +60,4 @@ Next, upload the .csr files for the `OB Seal` and `OB WAC`:
 If you have done everything successfully, you should see a green notification in the UI confirming the upload was successful, otherwise, check that
 you have completed all the steps to set your config and you have selected roles your eligible for in the dashboard.
 
-## Associate the certs with the Software Statement
-
-After uploading the .csr files, make sure to check the tick box to assign both certificates to your software statement. If successful, a green pop up
-should appear.
-
-
-## Downloading the PEM files from Open Banking Directory
-
-You will then need to download the `.pem` files for each certificate in the menu options for each certificate type. You can do this by clicking on the 
-three dots for each cert in the certificates table from the appropriate software statement view within the Open Banking Directory and selecting "Get PEM". 
-
-You should then rename the files to make them more identifiable using the following convention:
-
-```
-[cert-type].[company-name].KID.[cert-kid].[file-extension]
-```
-
-The end result should be 4 files in the format:
-
-```
-obwac.[company-name].KID.[obwac-cert-kid].key
-obwac.[company-name].KID.[obwac-cert-kid].pem
-obseal.[company-name].KID.[obseal-cert-kid].key
-obseal.[company-name].KID.[obseal-cert-kid].pem
-```
-
-## Upload the OB WAC and OB SEAL key and pem files to Yapily
-
-1. Go to the [Yapily Dashboard](https://dashboard.yapily.com/) and login
-2. Go to the [Certificates](https://dashboard.yapily.com/#!certificates) page 
-3. Click the "Add Certificate" button
-4. Upload your OB Seal pem file for the certificate
-5. Upload your OB Seal key file for the certificate 
-6. Name the certificate after ether of the file names without the extension 
-7. Save 
-8. Repeat steps 3-7 for the OB WAC files
-9. Create or identify the Yapily Application you wish to use these certs for
-10. Email Yapily to request which `redirectUrl` for each application in Yapily
+Now return to [Create a Software Statement](https://docs.yapily.com/guides/applications/institutions/registration/direct/uk-prereqs#create-a-software-statement) for information on how to complete the final steps required in the Open Banking Directory.
